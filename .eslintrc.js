@@ -3,35 +3,9 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  env: {
-    browser: true,
-  },
-  overrides: [
-    {
-      files: ['*.test.*'],
-      env: {
-        jest: true,
-      },
-    },
-  ],
-  plugins: [
-    '@babel',
-    '@typescript-eslint',
-    'import',
-    'jsx-max-len',
-    'simple-import-sort',
-  ],
-  extends: [
-    'airbnb-typescript',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
-  ],
+  plugins: ['simple-import-sort'],
+  extends: ['airbnb-typescript'],
   rules: {
-    'import/first': 'error',
-    'import/newline-after-import': 'error',
     'simple-import-sort/imports': [
       'error',
       {
@@ -48,6 +22,5 @@ module.exports = {
         ],
       }
     ],
-    'simple-import-sort/exports': 'error',
   },
 };

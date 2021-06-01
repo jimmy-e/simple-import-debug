@@ -29,113 +29,25 @@ module.exports = {
     'prettier/react',
     'prettier/@typescript-eslint',
   ],
-  globals: {
-    // tests
-    page: true,
-    browser: true,
-    describe: true,
-    beforeAll: true,
-    beforeEach: true,
-    afterAll: true,
-    afterEach: true,
-    it: true,
-    test: true,
-    expect: true,
-    global: true,
-  },
   rules: {
-    // ----- REACT ----- //
-    'react/destructuring-assignment': 0,
-    'react/display-name': 0,
-    'react/jsx-closing-bracket-location': 1,
-    'react/jsx-curly-newline': 0, // handled by prettier
-    'react/jsx-indent': 'off',
-    'react/jsx-one-expression-per-line': 0, // unnecessary rule
-    'react/jsx-props-no-spreading': 0, // Allow prop spreading
-    'react/jsx-wrap-multilines': ['error', { arrow: true, return: true, declaration: true }],
-    'react/no-array-index-key': 0, // index keys are fine when used correctly
-    'react/no-unused-prop-types': 0, // Fails on SFC which GoogleMapReact is, etc.
-    'react/prop-types': 0, // Don't use prop types, use Typescript
-    'react/require-default-props': 0,
-
-    // ----- JSX ----- //
-    'jsx-a11y/click-events-have-key-events': 0,
-    'jsx-a11y/label-has-associated-control': 0,
-    'jsx-a11y/label-has-for': 0, // good eventually, but not now
-    'jsx-a11y/no-noninteractive-element-interactions': 0,
-    'jsx-a11y/no-static-element-interactions': 0,
-    'jsx-max-len/jsx-max-len': [2, { lineMaxLength: 100, tabWidth: 2, maxAttributesPerLine: 1 }],
-
-    // ----- TYPESCRIPT ----- //
-    '@typescript-eslint/ban-types': 0,
-    '@typescript-eslint/explicit-module-boundary-types': 0, // Eventually turn these back on
-    '@typescript-eslint/indent': 'off',
-    '@typescript-eslint/no-empty-interface': 0,
-    '@typescript-eslint/no-explicit-any': 0, // For now allow 'any'
-    '@typescript-eslint/no-inferrable-types': 0,
-    '@typescript-eslint/no-redeclare': 0,
-    '@typescript-eslint/no-var-requires': 0,
-    '@typescript-eslint/prefer-as-const': 0,
-    '@typescript-eslint/prefer-optional-chain': 'error',
-
-    // ----- IMPORTS ----- //
     'import/first': 'error',
     'import/newline-after-import': 'error',
-    // 'import/order': ['error', { 'newlines-between': 'never' }],
     'simple-import-sort/imports': [
       'error',
       {
-        // This declares the custom order in which imports should be grouped and then sorted.
         groups: [
           [
-            // 1. `react` comes first
             "^react",
-            // 2. All other packages come second.
             "^@?\\w",
-            // 3. Internal company packages should come next.
             "^(main|core|arc-storybook|viz|design-system|placement|reporting|onboarding)(/.*|$)",
-            // 4. Side effect imports.
             "^\\u0000",
-            // 5. Parent imports
             "^\\.\\.(?!/?$)",
-            // 6. Parent imports with `..`
             "^\\.\\./?$",
-            // 7. Style imports should be last.
             "^.+\\.s?css$",
           ],
         ],
       }
     ],
     'simple-import-sort/exports': 'error',
-
-    // ----- OTHER ----- //
-    'array-bracket-spacing': 0, // ['error', 'always'],
-    'arrow-parens': ['error', 'always'],
-    'comma-dangle': ['error', 'always-multiline'],
-    // Always enforce curly braces around if/else blocks; https://eslint.org/docs/rules/curly
-    curly: 'error',
-    'import/named': 0, // doesn't play well with Typescript
-    'implicit-arrow-linebreak': 0, // this conflicts with lines that are too long
-    'import/prefer-default-export': 0,
-    // This doesn't work with the aliases we've set up, plus I believe Typescript catches this
-    // anyways
-    'import/no-unresolved': 0,
-    indent: 'off',
-    'no-alert': 0,
-    'no-case-declarations': 0,
-    'no-console': ['error', { allow: ['warn', 'error'] }], // allow warnings and error logs
-    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
-    // GraphQL relies on an internal variable, __typename, with a dangling underscore.
-    'no-underscore-dangle': ['error', { allow: ['__typename'] }],
-    // Use the babel/eslint plugin to handle optional changing something like a?.foo() would
-    // raise a linting error before
-    'no-unused-expressions': 0,
-    // I *think* that the typescript compiler catches unused variables, plus this complaints about
-    // imported types
-    'no-unused-vars': 0,
-    'object-curly-spacing': ['error', 'always'],
-    'prefer-destructuring': 0,
-    quotes: 'off',
-    semi: ['error', 'always'],
   },
 };
